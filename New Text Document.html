@@ -1,0 +1,209 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!doctype html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<!doctype html>
+		<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1">
+			<title>Create Account - Prototype</title>
+			<style>
+				:root{
+					--teal: #19b39b;
+					--muted: #9aa3a3;
+					--input-border: #e6e6e6;
+					--bg: linear-gradient(180deg,#2f7f7f 0%, #2a6f6f 100%);
+					--modal-bg: #f7f8f8;
+					--maxw: 720px;
+				}
+				*{box-sizing:border-box}
+				html,body{height:100%}
+				body{
+					margin:0;
+					font-family: 'Helvetica Neue', Arial, sans-serif;
+					background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 10%), #2f7f88;
+					display:flex;align-items:center;justify-content:center;
+					padding:40px;
+					color:#344;
+				}
+
+				.card{
+					width:100%;max-width:var(--maxw);
+					background:var(--modal-bg);
+					border-radius:10px;
+					box-shadow:0 8px 30px rgba(16,30,30,0.25);
+					overflow:hidden;
+				}
+				.card-header{
+					text-align:center;padding:22px 18px;border-bottom:1px solid #e9eeee;background:linear-gradient(#f0f2f2,#eef3f3);
+				}
+				.card-header h1{margin:0;font-size:22px;color:#667;letter-spacing:0.5px}
+
+				.card-body{padding:26px 32px}
+
+				.form-grid{
+					display:grid;
+					grid-template-columns:1fr 1fr;
+					gap:18px 22px;
+					align-items:start;
+				}
+				.full{grid-column:1 / -1}
+
+				label.field-label{
+					display:block;font-weight:600;color:var(--teal);font-size:0.92rem;margin-bottom:8px
+				}
+				.required{color:var(--teal);margin-left:6px;font-weight:700}
+
+				input[type=text],input[type=email],input[type=password],input[type=number],select,textarea{
+					width:100%;padding:10px 12px;border-radius:6px;border:1px solid var(--input-border);background:white;font-size:0.95rem;color:#2e3d3d
+				}
+				input::placeholder, textarea::placeholder{color:#cfcfcf}
+				textarea{min-height:110px;resize:vertical}
+				input:focus,textarea:focus,select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 5px rgba(25,179,155,0.07)}
+
+				.inline-group{display:flex;gap:14px;align-items:center}
+				.inline-group .item{display:flex;align-items:center;gap:8px}
+				.inline-group .item input{width:auto}
+
+				select{appearance:menulist;padding-right:36px}
+
+				.file-wrap{display:flex;gap:12px;align-items:center}
+				.file-btn{
+					background:white;border:1px solid var(--input-border);padding:6px 10px;border-radius:4px;font-size:0.85rem
+				}
+				.file-name{color:#777;font-size:0.9rem}
+				input[type=file]{position:absolute;left:-9999px}
+
+				.slider-row{display:flex;align-items:center;gap:12px}
+				input[type=range]{flex:1}
+				.value-badge{background:var(--teal);color:#fff;padding:6px 10px;border-radius:6px;font-weight:700}
+
+				.card-footer{background:#eef5f4;padding:16px 22px;border-top:1px solid #e7efee;display:flex;justify-content:flex-end}
+				.btn{
+					background:var(--teal);color:white;padding:10px 16px;border-radius:6px;border:none;cursor:pointer;font-weight:600
+				}
+				.btn:active{transform:translateY(1px)}
+
+				.muted{color:var(--muted);font-size:0.9rem}
+
+				@media(max-width:640px){
+					.form-grid{grid-template-columns:1fr;gap:12px}
+					.card{margin:12px}
+				}
+			</style>
+		</head>
+		<body>
+			<div class="card" role="region" aria-label="Create account form">
+				<div class="card-header">
+					<h1>Create Account</h1>
+				</div>
+				<form class="card-body" onsubmit="event.preventDefault();alert('Submitted (prototype)')">
+					<div class="form-grid">
+						<div>
+							<label class="field-label" for="first">First name <span class="required">*</span></label>
+							<input id="first" name="first" type="text" placeholder="enter your first name" required>
+						</div>
+						<div>
+							<label class="field-label" for="last">Last name</label>
+							<input id="last" name="last" type="text" placeholder="enter your last name">
+						</div>
+
+						<div class="full">
+							<label class="field-label" for="email">Email<span class="required">*</span></label>
+							<input id="email" name="email" type="email" placeholder="enter your email" required>
+						</div>
+
+						<div>
+							<label class="field-label" for="pwd">Password <span class="required">*</span></label>
+							<input id="pwd" name="pwd" type="password" placeholder="enter your password" required>
+						</div>
+						<div>
+							<label class="field-label" for="pwd2">Confirm Password <span class="required">*</span></label>
+							<input id="pwd2" name="pwd2" type="password" placeholder="enter your password again" required>
+						</div>
+
+						<div>
+							<label class="field-label">Gender:</label>
+							<div class="inline-group" role="radiogroup" aria-label="Gender">
+								<label class="item"><input type="radio" name="gender" value="male"> <span class="muted">Male</span></label>
+								<label class="item"><input type="radio" name="gender" value="female"> <span class="muted">Female</span></label>
+							</div>
+						</div>
+						<div>
+							<label class="field-label">Hobbies</label>
+							<div class="inline-group">
+								<label class="item"><input type="checkbox" name="hobby" value="music"> <span class="muted">Music</span></label>
+								<label class="item"><input type="checkbox" name="hobby" value="sports"> <span class="muted">Sports</span></label>
+								<label class="item"><input type="checkbox" name="hobby" value="travel"> <span class="muted">Travel</span></label>
+								<label class="item"><input type="checkbox" name="hobby" value="movies"> <span class="muted">Movies</span></label>
+							</div>
+						</div>
+
+						<div>
+							<label class="field-label" for="src">Source of Income</label>
+							<select id="src" name="src">
+								<option>Employed</option>
+								<option>Self-employed</option>
+								<option>Student</option>
+								<option>Unemployed</option>
+							</select>
+						</div>
+						<div>
+							<label class="field-label">Income</label>
+							<div class="slider-row">
+								<input id="income" type="range" min="0" max="100" value="20" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+								<div id="incomeVal" class="value-badge">20K</div>
+							</div>
+						</div>
+
+						<div>
+							<label class="field-label">Upload Profile Picture</label>
+							<div class="file-wrap">
+								<label class="file-btn" for="avatar">Choose File</label>
+								<span id="fileName" class="file-name">No file chosen</span>
+								<input id="avatar" type="file" aria-label="Upload profile picture">
+							</div>
+						</div>
+						<div>
+							<label class="field-label" for="age">Age</label>
+							<input id="age" name="age" type="number" min="0" value="18">
+						</div>
+
+						<div class="full">
+							<label class="field-label" for="bio">Bio</label>
+							<textarea id="bio" placeholder=""></textarea>
+						</div>
+					</div>
+				</form>
+				<div class="card-footer">
+					<button class="btn" type="button" onclick="alert('Create clicked (prototype)')">Create</button>
+				</div>
+			</div>
+			<script>
+				const range = document.getElementById('income');
+				const badge = document.getElementById('incomeVal');
+				range.addEventListener('input', function(){
+					const val = Math.round(range.value);
+					badge.textContent = val + 'K';
+					range.setAttribute('aria-valuenow', val);
+				});
+
+				const file = document.getElementById('avatar');
+				const fileName = document.getElementById('fileName');
+				const fileBtn = document.querySelector('.file-btn');
+				fileBtn.addEventListener('click', function(){ file.click(); });
+				file.addEventListener('change', function(){
+					fileName.textContent = file.files.length ? file.files[0].name : 'No file chosen';
+				});
+			</script>
+		</body>
+		</html>
+
